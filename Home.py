@@ -10,9 +10,9 @@ st.set_page_config(
 
 df = pd.read_csv("./data/spotify_dataset.csv")
 
-st.title("Load Movie Cover Image")
+st.title("Album Cover Image")
 
-input_album = st.text_input("Enter the movie name").lower()
+input_album = st.text_input("Enter the Album name (Case Insensitive)").lower()
 album_url = df.loc[df["Album"].str.lower() == input_album]["Cover Image"].head(1).squeeze()
 suggestion = df.loc[df["Album"].str.lower().str.contains(input_album)]["Album"].unique()
 
@@ -26,7 +26,7 @@ if len(input_album) != 0:
         st.warning(f"{input_album} not found in my database. Do you mean {suggestion}")
         #st.warning(suggestion)
 else:
-    st.info("Write the movie Name in the text box")
+    st.info("Write the Album Name and press ENTER")
 ##st.page_link("http://www.google.com", label="Google", icon="🌎")
 #st.page_link("pages/page1.py", label="newpage", icon="✅")
 #st.session_state
